@@ -3,16 +3,24 @@ const i1 = document.getElementById('i1');
 const i2 = document.getElementById('i2');
 const i3 = document.getElementById('i3');
 const i4 = document.getElementById('i4');
-let nowIndicator = 1; // Присваиваем начальное значение
+let nowIndicator = 1; 
+const myWidth = window.innerWidth
+
+const scrillItem5 = document.getElementById('scrollitem5')
+const scrillItem6 = document.getElementById('scrollitem6')
 
 function updateIndicators() {
-    // Сбрасываем класс у всех индикаторов
+
     i1.classList.remove('--indicator-dark');
     i2.classList.remove('--indicator-dark');
     i3.classList.remove('--indicator-dark');
     i4.classList.remove('--indicator-dark');
 
-    // Добавляем класс активному индикатору
+    if(myWidth < 500){
+      scrillItem6.remove()
+      scrillItem5.remove()
+    }
+
     if (nowIndicator === 1) {
         i1.classList.add('--indicator-dark');
     } else if (nowIndicator === 2) {
@@ -26,23 +34,38 @@ function updateIndicators() {
 
 function onLeft(){
     console.log('Скролл влево');
-    scrollBar.scrollBy({ left: -450, behavior: 'smooth' });
-
+    if(myWidth > 1000){
+        scrollBar.scrollBy({ left: -450, behavior: 'smooth' });
+    }
+    if(myWidth < 1000 && myWidth > 500){
+        scrollBar.scrollBy({ left: -450, behavior: 'smooth' });
+    }
+    if(myWidth < 500){
+        scrollBar.scrollBy({ left: -332, behavior: 'smooth' });
+    }
     if (nowIndicator > 1) {
-        nowIndicator--; // Уменьшаем счетчик индикатора
-        updateIndicators(); // Обновляем индикаторы
+        nowIndicator--; 
+        updateIndicators(); 
     }
 }
 
 function onRight(){
     console.log('Скролл вправо');
-    scrollBar.scrollBy({ left: 450, behavior: 'smooth' });
+    if(myWidth > 1000){
+        scrollBar.scrollBy({ left: 450, behavior: 'smooth' });
+    }
+    if(myWidth < 1000 && myWidth > 500){
+        scrollBar.scrollBy({ left: 450, behavior: 'smooth' });
+    }
+    if(myWidth < 500){
+        scrollBar.scrollBy({ left: 332, behavior: 'smooth' });
+    }
 
     if (nowIndicator < 4) {
-        nowIndicator++; // Увеличиваем счетчик индикатора
-        updateIndicators(); // Обновляем индикаторы
+        nowIndicator++; 
+        updateIndicators(); 
     }
 }
 
-// Инициализация индикаторов при загрузке
+
 updateIndicators();
