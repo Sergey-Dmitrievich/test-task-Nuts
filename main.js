@@ -5,7 +5,6 @@ const i3 = document.getElementById('i3');
 const i4 = document.getElementById('i4');
 let nowIndicator = 1; 
 const myWidth = window.innerWidth
-
 const scrillItem5 = document.getElementById('scrollitem5')
 const scrillItem6 = document.getElementById('scrollitem6')
 
